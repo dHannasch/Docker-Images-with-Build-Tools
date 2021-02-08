@@ -11,8 +11,8 @@ COPY environment.sh .
 RUN set -o allexport \
     && . ./fix_all_gotchas.sh \
     && set +o allexport \
-    && yum install --assumeyes https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
     && yum install --assumeyes git gcc-c++ cmake wget curl \
+    && yum install --assumeyes https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
     && yum install --assumeyes libXt p7zip-plugins unzip \
     && rm --recursive --force /var/cache/yum \
     && . ./cleanup.sh
