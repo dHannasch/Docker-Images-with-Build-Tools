@@ -1,4 +1,4 @@
-FROM centos
+FROM fedora:rawhide
 
 ARG FIX_ALL_GOTCHAS_SCRIPT_LOCATION
 ARG CLEANUP_SCRIPT_LOCATION
@@ -16,7 +16,6 @@ RUN set -o allexport \
     && dnf install --assumeyes curl \
     && dnf install --assumeyes --setopt=install_weak_deps=False git gcc-c++ cmake wget \
     && dnf install --assumeyes --setopt=install_weak_deps=False libXt unzip \
-    && if [ -z ${PROXY_CA_PEM+ABC} ]; then cp $PROXY_CA_PEM /etc/pki/ca-trust/source/; update-ca-trust; fi \
     && dnf install --assumeyes --setopt=install_weak_deps=False epel-release \
     && dnf install --assumeyes --setopt=install_weak_deps=False p7zip-plugins \
     && dnf clean all \
