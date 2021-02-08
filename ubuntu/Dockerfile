@@ -11,8 +11,11 @@ COPY environment.sh .
 RUN set -o allexport \
     && . ./fix_all_gotchas.sh \
     && set +o allexport \
+    && set -o errexit -o nounset -o pipefail \
     && apt-get update \
     && apt-get install --assume-yes git g++ cmake wget \
     && apt-get install --assume-yes p7zip-full \
+    && apt-get clean \
+    && rm --recursive --force /var/lib/apt/lists/*
     && . ./cleanup.sh
 
