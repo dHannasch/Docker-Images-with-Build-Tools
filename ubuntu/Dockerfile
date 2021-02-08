@@ -13,9 +13,9 @@ RUN set -o allexport \
     && set +o allexport \
     && set -o errexit -o nounset -o pipefail \
     && apt-get update \
-    && apt-get install --assume-yes git g++ cmake wget \
-    && apt-get install --assume-yes p7zip-full \
+    && apt-get install --assume-yes git g++ cmake wget curl \
+    && apt-get install --assume-yes libxt6 p7zip-full unzip \
     && apt-get clean \
-    && rm --recursive --force /var/lib/apt/lists/*
+    && rm --recursive --force /var/lib/apt/lists/* \
     && . ./cleanup.sh
 
