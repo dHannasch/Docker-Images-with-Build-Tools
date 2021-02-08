@@ -12,6 +12,8 @@ RUN set -o allexport \
     && . ./fix_all_gotchas.sh \
     && set +o allexport \
     && set -o pipefail \
+    && if [ -z ${PROXY_CA_PEM+ABC} ]; then echo 'no PROXY_CA_PEM'; else cp $PROXY_CA_PEM /etc/pki/ca-trust/source/anchors/; fi \
+    && update-ca-trust \
     && dnf upgrade-minimal --assumeyes \
     && dnf install --assumeyes curl \
     && dnf install --assumeyes --setopt=install_weak_deps=False git gcc-c++ cmake wget \
