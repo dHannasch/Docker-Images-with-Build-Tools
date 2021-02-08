@@ -15,7 +15,7 @@ RUN set -o allexport \
     && dnf upgrade-minimal --assumeyes \
     && dnf install --assumeyes curl \
     && dnf install --assumeyes --setopt=install_weak_deps=False git gcc-c++ cmake wget \
-    && dnf install --assumeyes --setopt=install_weak_deps=False libXt p7zip-plugins unzip \
+    && dnf install --assumeyes --setopt=install_weak_deps=False libXt unzip \
     && dnf install --assumeyes --setopt=install_weak_deps=False epel-release \
     && dnf install --assumeyes --setopt=install_weak_deps=False p7zip-plugins \
     && dnf clean all \
