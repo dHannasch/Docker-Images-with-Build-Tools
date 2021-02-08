@@ -12,7 +12,7 @@ RUN set -o allexport \
     && . ./fix_all_gotchas.sh \
     && set +o allexport \
     && yum install --assumeyes https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
-    && yum install --assume-yes git gcc-c++ cmake wget curl \
-    && yum install --assume-yes libXt p7zip-plugins unzip \
+    && yum install --assumeyes git gcc-c++ cmake wget curl \
+    && yum install --assumeyes libXt p7zip-plugins unzip \
     && rm --recursive --force /var/cache/yum \
     && . ./cleanup.sh
