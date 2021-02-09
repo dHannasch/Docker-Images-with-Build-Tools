@@ -9,6 +9,7 @@ ADD $CLEANUP_SCRIPT_LOCATION .
 COPY environment.sh .
 
 RUN set -o allexport \
+    && set -o errexit \
     && . ./fix_all_gotchas.sh \
     && set +o allexport \
     && set -o pipefail \
