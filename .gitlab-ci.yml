@@ -10,5 +10,14 @@ include:
 
 build_for_gitlab_project_registry:
   extends: .build_with_kaniko
+  stage: build
   variables:
     SKIP_DOCKER_TAG_COMMIT_SHORT_SHA: 1
+
+
+test-debian:
+  stage: test
+  image: $CI_REGISTRY_IMAGE/debian
+  script:
+  - apt-get install --assume-yes python3-pip
+
