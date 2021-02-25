@@ -1,0 +1,4 @@
+#!/bin/sh
+# https://docs.docker.com/docker-hub/builds/advanced/#build-hook-examples
+docker build --tag $IMAGE_NAME --file $DOCKERFILE_PATH --build-arg FIX_ALL_GOTCHAS_SCRIPT_LOCATION=$FIX_ALL_GOTCHAS_SCRIPT_LOCATION --build-arg ETC_ENVIRONMENT_LOCATION=$ETC_ENVIRONMENT_LOCATION --build-arg CLEANUP_SCRIPT_LOCATION=$CLEANUP_SCRIPT_LOCATION .
+
