@@ -2,5 +2,8 @@
 # https://docs.docker.com/docker-hub/builds/advanced/#build-hook-examples
 wget $ETC_ENVIRONMENT_LOCATION --output-document environment.sh --no-clobber
 curl --verbose --location $ETC_ENVIRONMENT_LOCATION --output environment.sh
-docker build --tag $IMAGE_NAME --file $DOCKERFILE_PATH --build-arg FIX_ALL_GOTCHAS_SCRIPT_LOCATION=$FIX_ALL_GOTCHAS_SCRIPT_LOCATION --build-arg ETC_ENVIRONMENT_LOCATION=$ETC_ENVIRONMENT_LOCATION --build-arg CLEANUP_SCRIPT_LOCATION=$CLEANUP_SCRIPT_LOCATION .
+# We have to put the hooks/ directory at the same level as the Dockerfile for it to get picked up at all,
+# and then using the provided $DOCKERFILE_PATH variable is wrong because we need a path relative to our current location.
+# Weird.
+docker build --tag $IMAGE_NAME --file Dockerfile --build-arg FIX_ALL_GOTCHAS_SCRIPT_LOCATION=$FIX_ALL_GOTCHAS_SCRIPT_LOCATION --build-arg ETC_ENVIRONMENT_LOCATION=$ETC_ENVIRONMENT_LOCATION --build-arg CLEANUP_SCRIPT_LOCATION=$CLEANUP_SCRIPT_LOCATION .
 
