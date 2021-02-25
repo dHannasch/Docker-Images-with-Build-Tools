@@ -19,5 +19,9 @@ test-debian:
   stage: test
   image: $CI_REGISTRY_IMAGE/debian
   script:
-  - apt-get install --assume-yes python3-pip
+  - apt-get update && apt-get install --assume-yes python3-pip
+
+test-debian-alt:
+  extends: test-debian
+  image: dahanna/docker-images-with-build-tools:debian
 
